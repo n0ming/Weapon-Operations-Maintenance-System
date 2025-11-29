@@ -1,6 +1,3 @@
-// zybo_audio_uio_udp_tx.c — Zybo Z7-10: I2S 캡처 → UDP(AUD0) 전송 (프레임 패이싱 추가)
-// build: gcc -O2 -Wall -Wextra -o zybo_audio_uio_udp_tx zybo_audio_uio_udp_tx.c -lpthread -lm
-
 #define _GNU_SOURCE
 #include <arpa/inet.h>
 #include <errno.h>
