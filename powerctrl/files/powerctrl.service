@@ -1,0 +1,12 @@
+[Unit]
+Description=Serial powerctrl Service
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/powerctrl
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

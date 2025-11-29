@@ -1,0 +1,15 @@
+[Unit]
+Description=Serial RS422 Service
+Requires=tcp.service
+After=tcp.service
+Before=can.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rs422
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+

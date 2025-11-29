@@ -1,0 +1,14 @@
+[Unit]
+Description=TCP Server Service
+
+After=local-fs.target setip.service network.target
+Requires=setip.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/tcp
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

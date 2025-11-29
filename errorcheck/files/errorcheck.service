@@ -1,0 +1,16 @@
+[Unit]
+Description=Minimal service-state watcher (active-only -> .sock)
+Wants=tcp.service
+After=tcp.service                 # /run/status.sock 은 tcp가 bind
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/errorcheck /etc/errorcheck.conf
+Restart=always
+RestartSec=1s
+RuntimeDirectory=errorcheck
+RuntimeDirectoryMode=0755
+SyslogIdentifier=errorcheck
+
+[Install]
+WantedBy=multi-user.target

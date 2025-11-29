@@ -1,0 +1,23 @@
+[Unit]
+Description=WS2812 LED driver (AXI-GPIO via UIO)
+Wants=systemd-udev-settle.service
+After=systemd-udev-settle.service
+ConditionPathExists=/dev/uio2
+
+# 여기부터 추가
+# rs422 서비스와 tcp(TCP) 서비스가 먼저 실행된 뒤에 LED 시작
+Wants=rs422.service tcp.service
+After=rs422.service tcp.service
+# 진짜 강하게 묶고 싶으면 Requires도 가능 (해당 서비스 죽으면 led도 같이 끊김)
+#Requires=rs422.service tcp.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/led /dev/uio2
+Restart=always
+RestartSec=2
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

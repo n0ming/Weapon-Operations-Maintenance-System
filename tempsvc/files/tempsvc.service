@@ -1,0 +1,14 @@
+[Unit]
+Description=TEMP Reader Service
+Requires=can.service tcp.service
+After=can.service tcp.service     # can이 /run/can.tempsvc.sock bind 후 내가 sendto
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/tempsvc
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+

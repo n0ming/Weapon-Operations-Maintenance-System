@@ -1,0 +1,16 @@
+[Unit]
+Description=MIC Driver
+Wants=systemd-udev-settle.service
+After=systemd-udev-settle.service
+ConditionPathExists=/dev/uio3
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mic /dev/uio3
+Restart=always
+RestartSec=2
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

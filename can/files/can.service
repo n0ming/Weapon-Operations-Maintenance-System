@@ -1,0 +1,15 @@
+[Unit]
+Description=Serial can Service
+Requires=tcp.service
+After=tcp.service rs422.service   # can.tempsvc.sock은 can이 bind, rs422.sock은 rs422가 bind
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/can
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
