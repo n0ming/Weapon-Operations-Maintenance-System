@@ -1,6 +1,3 @@
-// audio_udp_rx.c — Zybo Z7-10: UDP(AUD0) 수신 → 큐 → DMA(MM2S) → I2S TX (프리버퍼 추가)
-// build: gcc -O2 -Wall -Wextra -o audio_udp_rx audio_udp_rx.c -lpthread -lm
-
 #define _GNU_SOURCE
 #include <unistd.h>
 #include <stdint.h>
